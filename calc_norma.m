@@ -8,4 +8,4 @@ function y = calc_norma(var1)
 % Norma-2 de um vetor  https://pt.wikipedia.org/wiki/Norma_(matem%C3%A1tica) 
 % ---------------------------------------------------------------------------
 
-y = norm(var1);
+y = norm(var1);clc
