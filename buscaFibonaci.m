@@ -2,7 +2,7 @@ function alpha = buscaFibonaci(alpha_bar,d,tol,x)
 %------------------------------------------------------
 % DESCRICAO: Metodo de busca unidimensional Fibonaci
 % INPUT:
-% alpha_bar: valor do DELTA 1
+% alpha_bar: valor do limite superior do intervalo[0,alpha_bar)
 %
 %     [ dx1 ]
 % d = | dx2 | = vetor que contem a direçao de descida
@@ -28,8 +28,8 @@ Fn = alpha_bar/tol;
 %construção do vetor fibonacci 
 %OBS1: o vetor se inicia com inidce 1(um)
 %-------------|------------------------------------------------------------
-%     n      =|1 2  3  4  5  6  7  8  9  10  11  12   13   14   15   16 
-%fibonacci(n)=|1 1  2  3  5  8  13 21 34 55  89  144  233  377  610  987
+%     n      =|1 2  3  4  5  6  7  8  9  10  11  12   13   14   15   16 ...
+%fibonacci(n)=|1 1  2  3  5  8  13 21 34 55  89  144  233  377  610  987...
 %-------------|------------------------------------------------------------
 
 %% Busca pelo valor Fn
@@ -81,6 +81,7 @@ while(k<index_fib-1)
 end
 
 alpha = (lambida_k+u_k)/2;
+
 % Caso tenha alguma duvida verificar BAZARAA,et. al. Nonlinear Programmim
 % Theory and Algorithms,3rd Edition p.351
 toc
