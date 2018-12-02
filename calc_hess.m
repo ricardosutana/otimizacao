@@ -1,4 +1,4 @@
-function [y] = calc_hess(f,var1,var2,var3,a,b,c)
+function [y] = calc_hess(f,var,pto)
 %---------------------------------------------------------------------------
 % DESCRIÇÃO DA FUNCAO: Calcula a matriz hessiana de uma função
 % ENTRADA:
@@ -14,8 +14,13 @@ function [y] = calc_hess(f,var1,var2,var3,a,b,c)
 % y = vetor coluna contendo os valores calculados
 %---------------------------------------------------------------------------
 
-%funcao que determina simbolicamente a hessiana de f(x)
-hess_f = hessian(f,[var1 var2 var3]);
-
-%calculo do gradiente no ponto [a,b,c]
-y = double(subs(hess_f,[var1 var2 var3],[a b c]));
+if nargin ==2
+    %funcao que determina simbolicamente a hessiana de f(x)
+    hess_f = hessian(f,[var(1,1) var(2,1) var(3,1)]);
+    y = hess_f;
+else
+    %funcao que determina simbolicamente a hessiana de f(x)
+    hess_f = hessian(f,[var(1,1) var(2,1) var(3,1)]);
+    %calculo do gradiente no ponto [a,b,c]
+    y = double(subs(hess_f,[var(1,1) var(2,1) var(3,1)],[pto(1,1) pto(2,1) pto(3,1)]));
+end

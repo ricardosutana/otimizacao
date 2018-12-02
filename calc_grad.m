@@ -1,4 +1,4 @@
-function [y] = calc_grad(f,var1,var2,var3,a,b,c)
+function [y] = calc_grad(f,var,pto)
 %---------------------------------------------------------------------------
 % DESCRIÇÃO: calcula o gradiente de uma funçao
 % INPUT: 
@@ -15,9 +15,16 @@ function [y] = calc_grad(f,var1,var2,var3,a,b,c)
 %---------------------------------------------------------------------------
 
 %funcao que determina simbolicamente o gradiente de f(x)
-grad_f = gradient(f,[var1 var2 var3]);
+grad_f = gradient(f,[var(1,1) var(2,1) var(3,1)]);
 
-%calculo do gradiente no ponto [a,b,c]
-y = double(subs(grad_f,[var1 var2 var3],[a b c]));
-
+% Verifica se o numero de argumentos passado para a funcao calc_grad for
+%igual a 2(f,var) retorna a funcao em forma simbolica
+ 
+if nargin == 2
+    y= grad_f;
+%caso contrario retorna o valor da funão no ponto a b c
+else 
+ %calculo do gradiente no ponto [a,b,c]
+ y = double(subs(grad_f,[var(1,1) var(2,1) var(3,1)],[pto(1,1) pto(2,1) pto(3,1)]));
+end
 
